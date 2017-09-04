@@ -1,7 +1,5 @@
 package com.outmind.jts.somnium;
 
-import android.app.Dialog;
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.ContextMenu;
@@ -11,23 +9,17 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
+import domain.BaseDomain;
 import utilities.ActivityUtility;
 
 public class BaseActivity extends AppCompatActivity {
 
-    ListView listMain;
-    List<String> items_list;
-    List<String> contextMenu;
-    ArrayAdapter<String> arrayAdapter;
-
+    ListView lv_listMain;
     ActivityUtility au;
 
     @Override
@@ -37,19 +29,20 @@ public class BaseActivity extends AppCompatActivity {
 
         au = new ActivityUtility();
 
-        listMain = (ListView) findViewById(R.id.listMain);
+        lv_listMain = (ListView) findViewById(R.id.listMain);
 
         String[] items = new String[] {
                 "Item 1",
                 "Jan Awesome"
         };
 
-        items_list = new ArrayList<>(Arrays.asList(items));
+        BaseDomain.lv_main = lv_listMain;
+        BaseDomain.list_main = new ArrayList<>(Arrays.asList(items));
 
-        arrayAdapter = new ArrayAdapter<>
-                (this, android.R.layout.simple_list_item_1, items_list);
+        BaseDomain.list_adapter = new ArrayAdapter<>
+                (this, android.R.layout.simple_list_item_1, BaseDomain.list_main);
 
-//        listMain.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+//        lv_listMain.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
 //            @Override
 //            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
 //                Toast.makeText(BaseActivity.this, "wtf", Toast.LENGTH_SHORT).show();
@@ -57,9 +50,10 @@ public class BaseActivity extends AppCompatActivity {
 //            }
 //        });
 
-
-        registerForContextMenu(listMain);
-
+//        lv_listMain.setAdapter(BaseDomain.list_adapter);
+//        registerForContextMenu(lv_listMain);
+        BaseDomain.lv_main.setAdapter(BaseDomain.list_adapter);
+        registerForContextMenu(BaseDomain.lv_main);
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -112,7 +106,9 @@ public class BaseActivity extends AppCompatActivity {
      * @param v
      */
     public void newItemInit(View v) {
-        items_list.add("ADD MORE");
-        listMain.setAdapter(arrayAdapter);
+//        System.out.print("WHAT THE FUUUUCK");
+//
+//        items_list.add("ADD MORE");
+//        lv_listMain.setAdapter(arrayAdapter);
     }
 }

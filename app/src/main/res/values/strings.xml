@@ -2,6 +2,10 @@
     <string name="app_name">Somnium</string>
     <string name="btn_app_ver">Version</string>
 
+    <!-- STATES -->
+    <string name="st_list_add">Add new list</string>
+    <string name="st_list_del">Delete list(s)</string>
+
     <!-- Button Texts -->
     <string name="btn_add_item">New</string>
     <string name="btn_del_item">Delete</string>
