@@ -3,8 +3,8 @@
     package="com.outmind.jts.somnium">
 
     <application
+        android:name="com.orm.SugarApp"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
@@ -12,12 +12,19 @@
         <activity android:name=".BaseActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".AddListActivity" />
         <activity android:name=".SingleListActivity"></activity>
+
+        <!-- B: SugarORM -->
+        <meta-data android:name="DATABASE" android:value="jts_somnium.db" />
+        <meta-data android:name="VERSION" android:value="3" />
+        <meta-data android:name="QUERY_LOG" android:value="true" />
+        <meta-data android:name="DOMAIN_PACKAGE_NAME" android:value="entity" />
+        <!-- E: SugarORM -->
+
     </application>
 
 </manifest>

@@ -11,10 +11,15 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.orm.SugarRecord;
+
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
 
 import domain.BaseDomain;
+import entity.MasterList;
 import utilities.ActivityUtility;
 
 public class BaseActivity extends AppCompatActivity {
@@ -32,8 +37,7 @@ public class BaseActivity extends AppCompatActivity {
         lv_listMain = (ListView) findViewById(R.id.listMain);
         BaseDomain.lv_main = lv_listMain;
 
-        BaseDomain.list_main = new ArrayList<>();
-        BaseDomain.list_adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, BaseDomain.list_main);
+        au.refreshMasterList(this);
 
         /** Manual code for long-click listener of the list view */
 //        lv_listMain.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {

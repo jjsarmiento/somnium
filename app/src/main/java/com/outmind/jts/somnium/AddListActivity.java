@@ -7,11 +7,14 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import domain.BaseDomain;
+import utilities.ActivityUtility;
 
 public class AddListActivity extends AppCompatActivity {
 
     Button addBtn;
     EditText title;
+    EditText description;
+    ActivityUtility au;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,10 +24,13 @@ public class AddListActivity extends AppCompatActivity {
 
         addBtn = (Button) findViewById(R.id.addBtn);
         title = (EditText) findViewById(R.id.et_title);
+        description = (EditText) findViewById(R.id.et_description);
+        au = new ActivityUtility();
     }
 
     public void addNewListToMain(View v) {
-        BaseDomain.addNewItemOnList(title.getText().toString());
+        BaseDomain.addNewItemOnList(title.getText().toString(), description.getText().toString());
+        au.refreshMasterList(this);
         finish();
     }
 }

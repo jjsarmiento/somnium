@@ -2,6 +2,13 @@ package utilities;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.widget.ArrayAdapter;
+
+import com.orm.query.Select;
+import com.outmind.jts.somnium.BaseActivity;
+
+import domain.BaseDomain;
+import entity.MasterList;
 
 /**
  *
@@ -20,6 +27,17 @@ public class ActivityUtility {
         } catch (Exception e) {
             System.out.print(e.toString());
         }
+    }
+
+    public void refreshMasterList(Activity activity) {
+        BaseDomain.db_MasterList = MasterList.listAll(MasterList.class);
+        BaseDomain.db_MasterList = Select.from(MasterList.class).orderBy("id desc").list();
+        BaseDomain.list_adapter = new ArrayAdapter<>(activity, android.R.layout.simple_list_item_1, BaseDomain.db_MasterList);
+        BaseDomain.lv_main.setAdapter(BaseDomain.list_adapter);
+    }
+
+    public void toListView(Class<Class> obj) {
+
     }
 
 }

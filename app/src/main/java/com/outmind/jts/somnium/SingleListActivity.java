@@ -6,6 +6,7 @@ import android.support.v7.view.menu.ListMenuItemView;
 import android.widget.TextView;
 
 import domain.BaseDomain;
+import entity.MasterList;
 
 public class SingleListActivity extends AppCompatActivity {
 
@@ -15,7 +16,7 @@ public class SingleListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_single_list);
-        String listView = BaseDomain.list_adapter.getItem(BaseDomain.ind_list_index);
-        getSupportActionBar().setTitle(listView);
+        MasterList listView = BaseDomain.list_adapter.getItem(BaseDomain.ind_list_index);
+        getSupportActionBar().setTitle(listView.getMl_title());
     }
 }
