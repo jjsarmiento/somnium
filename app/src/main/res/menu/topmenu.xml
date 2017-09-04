@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/tm_newList"
+        android:title="@string/btn_add_item" />
+    <item
+        android:id="@+id/tm_delList"
+        android:title="@string/btn_del_item" />
+    <item
+        android:id="@+id/tm_verBtn"
+        android:title="@string/btn_app_ver" />
+</menu>
