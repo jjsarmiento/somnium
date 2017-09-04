@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Somnium</string>
+
+    <!-- Button Texts -->
+    <string name="btn_add_item">New List</string>
+    <string name="btn_del_item">Delete List</string>
+</resources>
