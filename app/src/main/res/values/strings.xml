@@ -1,7 +1,12 @@
 <resources>
     <string name="app_name">Somnium</string>
+    <string name="btn_app_ver">Version</string>
 
     <!-- Button Texts -->
-    <string name="btn_add_item">New List</string>
-    <string name="btn_del_item">Delete List</string>
+    <string name="btn_add_item">New</string>
+    <string name="btn_del_item">Delete</string>
+
+    <!-- Field Placeholders -->
+    <string name="list_name">Enter your list\'s name</string>
+    <string name="list_desc">A short description what your list is all about</string>
 </resources>
