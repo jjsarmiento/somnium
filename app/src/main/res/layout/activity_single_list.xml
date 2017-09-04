@@ -7,17 +7,44 @@
     tools:context="com.outmind.jts.somnium.SingleListActivity">
 
     <LinearLayout
-        android:layout_width="395dp"
-        android:layout_height="587dp"
-        android:orientation="horizontal"
-        tools:layout_editor_absoluteY="8dp"
-        tools:layout_editor_absoluteX="8dp">
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp">
 
-        <TextView
-            android:id="@+id/listTitle"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="TextView" />
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/addItem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="ADD"
+                tools:text="ADD" />
+
+            <Button
+                android:id="@+id/favItem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="FAVORITE"
+                tools:text="FAVORITE" />
+
+            <Button
+                android:id="@+id/delItem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="DELETE"
+                tools:text="DELETE" />
+        </LinearLayout>
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

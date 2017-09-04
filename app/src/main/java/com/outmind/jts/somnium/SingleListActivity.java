@@ -9,14 +9,13 @@ import domain.BaseDomain;
 
 public class SingleListActivity extends AppCompatActivity {
 
-    TextView listTitle;
+    TextView tv_listTitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_single_list);
-
-        listTitle = (TextView) findViewById(R.id.listTitle);
-        listTitle.setText(BaseDomain.list_adapter.getItem(BaseDomain.ind_list_index));
+        String listView = BaseDomain.list_adapter.getItem(BaseDomain.ind_list_index);
+        getSupportActionBar().setTitle(listView);
     }
 }
