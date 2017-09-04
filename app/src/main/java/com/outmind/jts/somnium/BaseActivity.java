@@ -30,18 +30,12 @@ public class BaseActivity extends AppCompatActivity {
         au = new ActivityUtility();
 
         lv_listMain = (ListView) findViewById(R.id.listMain);
-
-        String[] items = new String[] {
-                "Item 1",
-                "Jan Awesome"
-        };
-
         BaseDomain.lv_main = lv_listMain;
-        BaseDomain.list_main = new ArrayList<>(Arrays.asList(items));
 
-        BaseDomain.list_adapter = new ArrayAdapter<>
-                (this, android.R.layout.simple_list_item_1, BaseDomain.list_main);
+        BaseDomain.list_main = new ArrayList<>();
+        BaseDomain.list_adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, BaseDomain.list_main);
 
+        /** Manual code for long-click listener of the list view */
 //        lv_listMain.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
 //            @Override
 //            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -50,9 +44,19 @@ public class BaseActivity extends AppCompatActivity {
 //            }
 //        });
 
-//        lv_listMain.setAdapter(BaseDomain.list_adapter);
-//        registerForContextMenu(lv_listMain);
+        /** List item click listener */
+        BaseDomain.lv_main.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                BaseDomain.ind_list_index = i;
+                au.start(BaseActivity.this, SingleListActivity.class);
+            }
+        });
+
+        /** Code for the setting of adapter of the listview */
         BaseDomain.lv_main.setAdapter(BaseDomain.list_adapter);
+
+        /** Register listview for contextmenu */
         registerForContextMenu(BaseDomain.lv_main);
     }
 
@@ -99,16 +103,5 @@ public class BaseActivity extends AppCompatActivity {
                 menu.add( Menu.NONE, i, i, conmen_contents[i] );
             }
         }
-    }
-
-    /**
-     * Adds new item in the listview
-     * @param v
-     */
-    public void newItemInit(View v) {
-//        System.out.print("WHAT THE FUUUUCK");
-//
-//        items_list.add("ADD MORE");
-//        lv_listMain.setAdapter(arrayAdapter);
     }
 }
