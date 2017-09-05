@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.widget.ArrayAdapter;
 
+import com.orm.query.Condition;
 import com.orm.query.Select;
 import com.outmind.jts.somnium.BaseActivity;
 
@@ -46,7 +47,8 @@ public class ActivityUtility {
     }
 
     public void refreshSubList(Activity activity) {
-        BaseDomain.db_SubList = Select.from(SubList.class).orderBy("id desc").list();
+        BaseDomain.db_SubList = SubList.findWithQuery(SubList.class, "SELECT * FROM SUB_LIST WHERE MASTER_LIST = " + BaseDomain.singleMasterList.getId().toString() + " ORDER BY ID DESC ");
+        System.out.println(BaseDomain.db_SubList);
 
         /** Using custom adapter */
         BaseDomain.subListAdapter = new SubListAdapter(activity, (ArrayList<SubList>) BaseDomain.db_SubList);

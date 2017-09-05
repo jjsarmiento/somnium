@@ -19,7 +19,6 @@ import utilities.ActivityUtility;
 
 public class SingleListActivity extends AppCompatActivity {
 
-    Button btnDel;
     OpsDelete opDelete;
     ActivityUtility au;
 
@@ -34,20 +33,19 @@ public class SingleListActivity extends AppCompatActivity {
 
         /** Initialize Sublist */
         BaseDomain.lv_sub = (ListView) findViewById(R.id.lv_sublist);
-        BaseDomain.lv_sub.setAdapter(BaseDomain.subListAdapter);
         au.refreshSubList(this);
 
-        /** List item click listener */
-        BaseDomain.lv_sub.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                BaseDomain.singleMasterList = BaseDomain.list_adapter.getItem(i);
-                au.start(SingleListActivity.this, EditSubListItemActivity.class);
-            }
-        });
-
-        /** Register listview for contextmenu */
-        registerForContextMenu(BaseDomain.lv_sub);
+//        /** List item click listener */
+//        BaseDomain.lv_sub.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+//                BaseDomain.singleMasterList = BaseDomain.list_adapter.getItem(i);
+//                au.start(SingleListActivity.this, EditSubListItemActivity.class);
+//            }
+//        });
+//
+//        /** Register listview for contextmenu */
+//        registerForContextMenu(BaseDomain.lv_sub);
     }
 
     public void addSubListItem( View v ) {
