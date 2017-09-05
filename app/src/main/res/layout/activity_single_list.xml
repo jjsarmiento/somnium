@@ -10,6 +10,7 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:orientation="vertical"
+        style="?android:attr/buttonBarStyle"
         tools:layout_editor_absoluteX="8dp"
         tools:layout_editor_absoluteY="8dp">
 
@@ -20,13 +21,16 @@
 
             <Button
                 android:id="@+id/addItem"
+                style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:onClick="addSubListItem"
                 android:text="ADD"
                 tools:text="ADD" />
 
             <Button
+                style="?android:attr/buttonBarButtonStyle"
                 android:id="@+id/favItem"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -34,17 +38,10 @@
                 android:text="FAVORITE"
                 tools:text="FAVORITE" />
 
-            <Button
-                android:id="@+id/delItem"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:onClick="deleteMasterList"
-                android:text="DELETE"
-                tools:text="DELETE" />
         </LinearLayout>
 
         <ListView
+            android:id="@+id/lv_sublist"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </LinearLayout>

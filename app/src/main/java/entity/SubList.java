@@ -12,12 +12,12 @@ public class SubList extends SugarRecord<SubList> {
     private String sl_description;
 
     /** 1:1 Relationship with MasterList */
-    private MasterList masterList;
+    private Long masterList;
 
     public SubList() {
     }
 
-    public SubList(String sl_title, String sl_description, MasterList masterList) {
+    public SubList(String sl_title, String sl_description, Long masterList) {
         this.sl_title = sl_title;
         this.sl_description = sl_description;
         this.masterList = masterList;
@@ -40,10 +40,10 @@ public class SubList extends SugarRecord<SubList> {
     }
 
     public MasterList getMasterList() {
-        return masterList;
+        return MasterList.findById(MasterList.class, masterList);
     }
 
-    public void setMasterList(MasterList masterList) {
+    public void setMasterList(Long masterList) {
         this.masterList = masterList;
     }
 }

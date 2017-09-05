@@ -34,7 +34,9 @@
             android:value="entity" />
         <!-- E: SugarORM -->
 
-        <activity android:name=".EditMainListActivity"></activity>
+        <activity android:name=".EditMainListActivity" />
+        <activity android:name=".AddSubListItemActivity" />
+        <activity android:name=".EditSubListItemActivity"></activity>
     </application>
 
 </manifest>

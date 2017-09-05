@@ -9,7 +9,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import data.OpsDelete;
 import domain.BaseDomain;
@@ -102,9 +101,14 @@ public class BaseActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Event handler of listview item click event
+     *
+     * @param item
+     * @return
+     */
     @Override
     public boolean onContextItemSelected(MenuItem item) {
-//        Toast.makeText(this, BaseDomain.ML_CONMENU_ITEMS[item.getItemId()], Toast.LENGTH_SHORT).show();
 
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
         BaseDomain.singleMasterList = BaseDomain.list_adapter.getItem(info.position);

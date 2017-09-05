@@ -12,6 +12,7 @@ import java.util.List;
 
 import domain.BaseDomain;
 import entity.MasterList;
+import entity.SubList;
 
 /**
  *
@@ -42,6 +43,14 @@ public class ActivityUtility {
         /** Using ArrayAdapter */
 //        BaseDomain.list_adapter = new ArrayAdapter<>(activity, android.R.layout.simple_list_item_1, BaseDomain.db_MasterList);
 //        BaseDomain.lv_main.setAdapter(BaseDomain.list_adapter);
+    }
+
+    public void refreshSubList(Activity activity) {
+        BaseDomain.db_SubList = Select.from(SubList.class).orderBy("id desc").list();
+
+        /** Using custom adapter */
+        BaseDomain.subListAdapter = new SubListAdapter(activity, (ArrayList<SubList>) BaseDomain.db_SubList);
+        BaseDomain.lv_sub.setAdapter(BaseDomain.subListAdapter);
     }
 
 }
