@@ -100,7 +100,7 @@ public class BaseActivity extends AppCompatActivity {
      */
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-        if (v.getId() == R.id.listMain) {
+        if ( v.getId() == R.id.listMain ) {
             AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo)menuInfo;
             String[] conmen_contents = getResources().getStringArray(R.array.conmen_array);
             for (int i = 0; i< conmen_contents.length; i++) {

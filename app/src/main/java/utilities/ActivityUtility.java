@@ -7,6 +7,9 @@ import android.widget.ArrayAdapter;
 import com.orm.query.Select;
 import com.outmind.jts.somnium.BaseActivity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import domain.BaseDomain;
 import entity.MasterList;
 
@@ -30,10 +33,16 @@ public class ActivityUtility {
     }
 
     public void refreshMasterList(Activity activity) {
-        BaseDomain.db_MasterList = MasterList.listAll(MasterList.class);
+//        BaseDomain.db_MasterList = MasterList.listAll(MasterList.class);
         BaseDomain.db_MasterList = Select.from(MasterList.class).orderBy("id desc").list();
-        BaseDomain.list_adapter = new ArrayAdapter<>(activity, android.R.layout.simple_list_item_1, BaseDomain.db_MasterList);
+
+        /** Using custom adapter */
+        BaseDomain.list_adapter = new MasterListAdapter(activity, (ArrayList<MasterList>) BaseDomain.db_MasterList);
         BaseDomain.lv_main.setAdapter(BaseDomain.list_adapter);
+
+        /** Using ArrayAdapter */
+//        BaseDomain.list_adapter = new ArrayAdapter<>(activity, android.R.layout.simple_list_item_1, BaseDomain.db_MasterList);
+//        BaseDomain.lv_main.setAdapter(BaseDomain.list_adapter);
     }
 
     public void toListView(Class<Class> obj) {

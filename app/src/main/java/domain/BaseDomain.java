@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import entity.MasterList;
+import utilities.MasterListAdapter;
 
 /**
  * Created by JTS on 9/4/2017.
@@ -16,7 +17,11 @@ import entity.MasterList;
 
 public class BaseDomain {
 
-    public static ArrayAdapter<MasterList>  list_adapter;
+    /** B: Constants */
+    public static final Integer             SUBSTR_MAXLENGTH = 30;
+    /** E: Constants */
+
+    public static MasterListAdapter         list_adapter;
     public static ListView                  lv_main;
     public static Integer                   ind_list_index;
     public static List<MasterList>          db_MasterList;

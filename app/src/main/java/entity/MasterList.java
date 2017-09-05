@@ -2,6 +2,8 @@ package entity;
 
 import com.orm.SugarRecord;
 
+import domain.BaseDomain;
+
 /**
  * Created by Phase1 on 9/4/2017.
  */
@@ -39,6 +41,8 @@ public class MasterList extends SugarRecord<MasterList> {
     public String getMl_description() {
         return ml_description;
     }
+
+    public String getMl_description_short(){ return ( ml_description.length() > BaseDomain.SUBSTR_MAXLENGTH ) ? ml_description.substring(0, BaseDomain.SUBSTR_MAXLENGTH) : getMl_description(); }
 
     public void setMl_description(String ml_description) {
         this.ml_description = ml_description;
