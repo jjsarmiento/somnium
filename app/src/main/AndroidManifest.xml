@@ -12,19 +12,29 @@
         <activity android:name=".BaseActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".AddListActivity" />
-        <activity android:name=".SingleListActivity"></activity>
+        <activity android:name=".SingleListActivity" />
 
         <!-- B: SugarORM -->
-        <meta-data android:name="DATABASE" android:value="jts_somnium.db" />
-        <meta-data android:name="VERSION" android:value="3" />
-        <meta-data android:name="QUERY_LOG" android:value="true" />
-        <meta-data android:name="DOMAIN_PACKAGE_NAME" android:value="entity" />
+        <meta-data
+            android:name="DATABASE"
+            android:value="jts_somnium.db" />
+        <meta-data
+            android:name="VERSION"
+            android:value="3" />
+        <meta-data
+            android:name="QUERY_LOG"
+            android:value="true" />
+        <meta-data
+            android:name="DOMAIN_PACKAGE_NAME"
+            android:value="entity" />
         <!-- E: SugarORM -->
 
+        <activity android:name=".EditMainListActivity"></activity>
     </application>
 
 </manifest>

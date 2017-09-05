@@ -33,7 +33,6 @@ public class ActivityUtility {
     }
 
     public void refreshMasterList(Activity activity) {
-//        BaseDomain.db_MasterList = MasterList.listAll(MasterList.class);
         BaseDomain.db_MasterList = Select.from(MasterList.class).orderBy("id desc").list();
 
         /** Using custom adapter */

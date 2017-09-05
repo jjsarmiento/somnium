@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.orm.SugarRecord;
 
@@ -32,6 +33,7 @@ public class BaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_base);
 
+        BaseDomain.ML_CONMENU_ITEMS = getResources().getStringArray(R.array.conmen_array);
         au = new ActivityUtility();
 
         lv_listMain = (ListView) findViewById(R.id.listMain);
@@ -52,7 +54,7 @@ public class BaseActivity extends AppCompatActivity {
         BaseDomain.lv_main.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                BaseDomain.ind_list_index = i;
+                BaseDomain.singleMasterList = BaseDomain.list_adapter.getItem(i);
                 au.start(BaseActivity.this, SingleListActivity.class);
             }
         });
@@ -102,10 +104,26 @@ public class BaseActivity extends AppCompatActivity {
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         if ( v.getId() == R.id.listMain ) {
             AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo)menuInfo;
-            String[] conmen_contents = getResources().getStringArray(R.array.conmen_array);
-            for (int i = 0; i< conmen_contents.length; i++) {
-                menu.add( Menu.NONE, i, i, conmen_contents[i] );
+            for (int i = 0; i< BaseDomain.ML_CONMENU_ITEMS.length; i++) {
+                menu.add( Menu.NONE, i, i, BaseDomain.ML_CONMENU_ITEMS[i] );
             }
         }
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+//        Toast.makeText(this, BaseDomain.ML_CONMENU_ITEMS[item.getItemId()], Toast.LENGTH_SHORT).show();
+        switch ( item.getItemId() ) {
+            case 0 :
+                AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+                BaseDomain.singleMasterList = BaseDomain.list_adapter.getItem(info.position);
+                au.start(this, EditMainListActivity.class);
+                break;
+            case 1 :
+                break;
+            case 2 :
+                break;
+        }
+        return true;
     }
 }

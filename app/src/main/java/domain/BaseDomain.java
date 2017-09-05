@@ -4,6 +4,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.outmind.jts.somnium.BaseActivity;
+import com.outmind.jts.somnium.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,10 +22,15 @@ public class BaseDomain {
     public static final Integer             SUBSTR_MAXLENGTH = 30;
     /** E: Constants */
 
+    /** B: Context Menu Items */
+    public static String[]                  ML_CONMENU_ITEMS;
+    /** E: Context Menu Items */
+
     public static MasterListAdapter         list_adapter;
     public static ListView                  lv_main;
     public static Integer                   ind_list_index;
     public static List<MasterList>          db_MasterList;
+    public static MasterList                singleMasterList;
 
     public static void addNewItemOnList(String title, String description){
         (new MasterList(title, description)).save();

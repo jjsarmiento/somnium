@@ -16,7 +16,6 @@ public class SingleListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_single_list);
-        MasterList listView = BaseDomain.list_adapter.getItem(BaseDomain.ind_list_index);
-        getSupportActionBar().setTitle(listView.getMl_title());
+        getSupportActionBar().setTitle(BaseDomain.singleMasterList.getMl_title());
     }
 }
