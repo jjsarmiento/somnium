@@ -10,7 +10,6 @@ import domain.BaseDomain;
 
 public class MasterList extends SugarRecord<MasterList> {
 
-    private Integer ml_id;
     private String ml_title;
     private String ml_description;
 
@@ -20,14 +19,6 @@ public class MasterList extends SugarRecord<MasterList> {
 //        this.ml_id = ml_id;
         this.ml_title = ml_title;
         this.ml_description = ml_description;
-    }
-
-    public Integer getMl_id() {
-        return ml_id;
-    }
-
-    public void setMl_id(Integer ml_id) {
-        this.ml_id = ml_id;
     }
 
     public String getMl_title() {

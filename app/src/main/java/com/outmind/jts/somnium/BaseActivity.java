@@ -8,19 +8,11 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.orm.SugarRecord;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
-
+import data.OpsDelete;
 import domain.BaseDomain;
-import entity.MasterList;
 import utilities.ActivityUtility;
 
 public class BaseActivity extends AppCompatActivity {
@@ -113,15 +105,21 @@ public class BaseActivity extends AppCompatActivity {
     @Override
     public boolean onContextItemSelected(MenuItem item) {
 //        Toast.makeText(this, BaseDomain.ML_CONMENU_ITEMS[item.getItemId()], Toast.LENGTH_SHORT).show();
+
+        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+        BaseDomain.singleMasterList = BaseDomain.list_adapter.getItem(info.position);
+
         switch ( item.getItemId() ) {
             case 0 :
-                AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
-                BaseDomain.singleMasterList = BaseDomain.list_adapter.getItem(info.position);
                 au.start(this, EditMainListActivity.class);
                 break;
             case 1 :
                 break;
             case 2 :
+                String title = BaseDomain.singleMasterList.getMl_title();
+                OpsDelete del = new OpsDelete();
+                del.deleteMasterList(BaseDomain.singleMasterList.getId());
+                au.refreshMasterList(this);
                 break;
         }
         return true;

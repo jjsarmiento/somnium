@@ -44,8 +44,4 @@ public class ActivityUtility {
 //        BaseDomain.lv_main.setAdapter(BaseDomain.list_adapter);
     }
 
-    public void toListView(Class<Class> obj) {
-
-    }
-
 }

@@ -8,7 +8,6 @@ import com.orm.SugarRecord;
 
 public class SubList extends SugarRecord<SubList> {
 
-    private Integer sl_id;
     private String sl_title;
     private String sl_description;
 
@@ -18,19 +17,10 @@ public class SubList extends SugarRecord<SubList> {
     public SubList() {
     }
 
-    public SubList(Integer sl_id, String sl_title, String sl_description, MasterList masterList) {
-        this.sl_id = sl_id;
+    public SubList(String sl_title, String sl_description, MasterList masterList) {
         this.sl_title = sl_title;
         this.sl_description = sl_description;
         this.masterList = masterList;
-    }
-
-    public Integer getSl_id() {
-        return sl_id;
-    }
-
-    public void setSl_id(Integer sl_id) {
-        this.sl_id = sl_id;
     }
 
     public String getSl_title() {
