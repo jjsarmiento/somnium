@@ -42,6 +42,7 @@ public class BaseActivity extends AppCompatActivity {
         au = new ActivityUtility();
         au.refreshMasterList(this);
 
+        // WHAT THE FUCK
 
         /** Manual code for long-click listener of the list view */
 //        lv_listMain.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
