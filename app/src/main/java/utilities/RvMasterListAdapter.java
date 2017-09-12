@@ -5,6 +5,7 @@ import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -73,14 +74,27 @@ public class RvMasterListAdapter extends RecyclerView.Adapter<RvMasterListAdapte
             cardView = (CardView) v.findViewById(R.id.cv);
 
             v.setOnCreateContextMenuListener(this);
+
         }
 
         @Override
         public void onCreateContextMenu(ContextMenu contextMenu, View view, ContextMenu.ContextMenuInfo contextMenuInfo) {
             for (String menuItem : BaseDomain.ML_CONMENU_ITEMS) {
-                contextMenu.add(menuItem);
+                MenuItem conMen = contextMenu.add(menuItem);
+                conMen.setOnMenuItemClickListener(onClickContextMenuitem);
             }
         }
+
+        private final MenuItem.OnMenuItemClickListener onClickContextMenuitem = new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem menuItem) {
+                System.out.println("CONTEXT MENU ID : " + menuItem.getItemId());
+//                switch (menuItem.getItemId()) {
+//
+//                }
+                return false;
+            }
+        };
     }
 
 }
