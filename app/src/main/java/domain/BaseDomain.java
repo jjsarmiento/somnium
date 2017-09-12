@@ -1,5 +1,7 @@
 package domain;
 
+import android.support.v7.widget.CardView;
+import android.support.v7.widget.RecyclerView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -12,6 +14,7 @@ import java.util.List;
 import entity.MasterList;
 import entity.SubList;
 import utilities.MasterListAdapter;
+import utilities.RvMasterListAdapter;
 import utilities.SubListAdapter;
 
 /**
@@ -26,11 +29,15 @@ public class BaseDomain {
 
     /** B: Context Menu Items */
     public static String[]                  ML_CONMENU_ITEMS;
+    public static String[]                  SL_CONMENU_ITEMS;
     /** E: Context Menu Items */
 
+    public static RecyclerView              rv_main;
+
     /** B: Master List Variables */
-    public static MasterListAdapter         list_adapter;
-    public static ListView                  lv_main;
+    public static RvMasterListAdapter       rvMasterListAdapter;
+//    public static MasterListAdapter         list_adapter;
+//    public static ListView                  lv_main;
     public static List<MasterList>          db_MasterList;
     public static MasterList                singleMasterList;
     /** E: Master List Variables */
@@ -39,7 +46,7 @@ public class BaseDomain {
     public static SubListAdapter            subListAdapter;
     public static ListView                  lv_sub;
     public static List<SubList>             db_SubList;
-    public static MasterList                singleSubList;
+    public static SubList                   singleSubList;
     /** E: Master List Variables */
 
     public static void addNewItemOnList(String title, String description){

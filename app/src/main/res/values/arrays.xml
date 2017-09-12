@@ -4,5 +4,13 @@
         <item>Edit</item>
         <item>Mark as favorite</item>
         <item>Delete</item>
+        <item>Card</item>
     </string-array>
+
+    <string-array name="conmen_sub_array">
+        <item>Edit</item>
+        <item>Cross-out</item>
+        <item>Remove</item>
+    </string-array>
+
 </resources>

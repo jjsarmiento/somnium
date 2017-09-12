@@ -1,6 +1,8 @@
 package utilities;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.widget.ArrayAdapter;
 
@@ -23,6 +25,8 @@ import entity.SubList;
  */
 public class ActivityUtility {
 
+    private static boolean ALERT_DIALOG_VAL = false;
+
     public ActivityUtility(){}
 
     public void start(Activity from, Class to){
@@ -36,14 +40,8 @@ public class ActivityUtility {
 
     public void refreshMasterList(Activity activity) {
         BaseDomain.db_MasterList = Select.from(MasterList.class).orderBy("id desc").list();
-
-        /** Using custom adapter */
-        BaseDomain.list_adapter = new MasterListAdapter(activity, (ArrayList<MasterList>) BaseDomain.db_MasterList);
-        BaseDomain.lv_main.setAdapter(BaseDomain.list_adapter);
-
-        /** Using ArrayAdapter */
-//        BaseDomain.list_adapter = new ArrayAdapter<>(activity, android.R.layout.simple_list_item_1, BaseDomain.db_MasterList);
-//        BaseDomain.lv_main.setAdapter(BaseDomain.list_adapter);
+        BaseDomain.rvMasterListAdapter = new RvMasterListAdapter((ArrayList<MasterList>) BaseDomain.db_MasterList, activity);
+        BaseDomain.rv_main.setAdapter(BaseDomain.rvMasterListAdapter);
     }
 
     public void refreshSubList(Activity activity) {
@@ -53,6 +51,23 @@ public class ActivityUtility {
         /** Using custom adapter */
         BaseDomain.subListAdapter = new SubListAdapter(activity, (ArrayList<SubList>) BaseDomain.db_SubList);
         BaseDomain.lv_sub.setAdapter(BaseDomain.subListAdapter);
+    }
+
+    public boolean confirm(Activity activity, String message) {
+        new AlertDialog.Builder(activity)
+            .setMessage(message)
+            .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int whichButton) {
+                    ALERT_DIALOG_VAL = true;
+                }})
+            .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    ALERT_DIALOG_VAL = false;
+                }
+            }).show();
+
+        return ALERT_DIALOG_VAL;
     }
 
 }
