@@ -1,6 +1,7 @@
 package utilities;
 
 import android.content.Context;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,6 +38,13 @@ public class RvMasterListAdapter extends RecyclerView.Adapter<RvMasterListAdapte
     public void onBindViewHolder(RvMasterListViewHolder holder, int position) {
         holder.tvName.setText(masterList.get(position).getMl_title());
         holder.tvDesc.setText(masterList.get(position).getMl_description());
+
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 
     @Override
@@ -49,19 +57,13 @@ public class RvMasterListAdapter extends RecyclerView.Adapter<RvMasterListAdapte
         protected TextView tvName;
         protected TextView tvDesc;
         protected View view;
+        protected CardView cardView;
 
         public RvMasterListViewHolder(View v) {
             super(v);
-            view = v;
             tvName = (TextView) v.findViewById(R.id.listName);
             tvDesc = (TextView) v.findViewById(R.id.listDesc);
-
-            view.setOnClickListener(new View.OnClickListener(){
-                @Override public void onClick(View v) {
-                    Toast.makeText(v.getContext(), "Sample", Toast.LENGTH_SHORT).show();
-                }
-            });
-
+            cardView = (CardView) v.findViewById(R.id.cv);
         }
 
     }
