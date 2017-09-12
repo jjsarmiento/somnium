@@ -5,6 +5,7 @@ import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -79,19 +80,32 @@ public class RvMasterListAdapter extends RecyclerView.Adapter<RvMasterListAdapte
 
         @Override
         public void onCreateContextMenu(ContextMenu contextMenu, View view, ContextMenu.ContextMenuInfo contextMenuInfo) {
-            for (String menuItem : BaseDomain.ML_CONMENU_ITEMS) {
-                MenuItem conMen = contextMenu.add(menuItem);
+            for (int i = 0; i < BaseDomain.ML_CONMENU_ITEMS.length; i++) {
+                MenuItem conMen = contextMenu.add(Menu.NONE, i, i, BaseDomain.ML_CONMENU_ITEMS[i]);
                 conMen.setOnMenuItemClickListener(onClickContextMenuitem);
             }
+//            for (String menuItem : BaseDomain.ML_CONMENU_ITEMS) {
+//                MenuItem conMen = contextMenu.add(Menu.NONE, 1, 1, menuItem);
+//                conMen.setOnMenuItemClickListener(onClickContextMenuitem);
+//            }
         }
 
         private final MenuItem.OnMenuItemClickListener onClickContextMenuitem = new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
-                System.out.println("CONTEXT MENU ID : " + menuItem.getItemId());
-//                switch (menuItem.getItemId()) {
-//
-//                }
+                switch (menuItem.getItemId()) {
+                    case 1 :
+                        // TODO Edit function
+                        break;
+                    case 2 :
+                        // TODO Mark as favorite function
+                        break;
+                    case 3 :
+                        // TODO Delete function
+                        break;
+                    default:
+                        break;
+                }
                 return false;
             }
         };
