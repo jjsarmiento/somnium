@@ -11,17 +11,12 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ListView;
-import android.widget.Toast;
 
-import data.OpsDelete;
 import domain.BaseDomain;
 import utilities.ActivityUtility;
 
 public class BaseActivity extends AppCompatActivity {
 
-//    ListView lv_listMain;
-    RecyclerView rv_listMain;
     ActivityUtility au;
 
     @Override
@@ -32,35 +27,13 @@ public class BaseActivity extends AppCompatActivity {
         BaseDomain.ML_CONMENU_ITEMS = getResources().getStringArray(R.array.conmen_array);
         BaseDomain.SL_CONMENU_ITEMS = getResources().getStringArray(R.array.conmen_sub_array);
 
-        rv_listMain = (RecyclerView) findViewById(R.id.rv);
-        BaseDomain.rv_main = rv_listMain;
+        BaseDomain.rv_main = (RecyclerView) findViewById(R.id.rv);
 
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(this);
         BaseDomain.rv_main.setLayoutManager(mLayoutManager);
-        rv_listMain.setLayoutManager(mLayoutManager);
 
         au = new ActivityUtility();
         au.refreshMasterList(this);
-
-        // WHAT THE FUCK
-
-        /** Manual code for long-click listener of the list view */
-//        lv_listMain.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-//            @Override
-//            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
-//                Toast.makeText(BaseActivity.this, "wtf", Toast.LENGTH_SHORT).show();
-//                return true;
-//            }
-//        });
-
-        /** List item click listener */
-//        BaseDomain.rv_main.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-//                BaseDomain.singleMasterList = BaseDomain.list_adapter.getItem(i);
-//                au.start(BaseActivity.this, SingleListActivity.class);
-//            }
-//        });
 
         BaseDomain.rv_main.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
             @Override
@@ -73,12 +46,7 @@ public class BaseActivity extends AppCompatActivity {
             }
         });
 
-        /** Code for the setting of adapter of the listview */
-//        BaseDomain.lv_main.setAdapter(BaseDomain.list_adapter);
-//        BaseDomain.rv_main.setAdapter(BaseDomain.rvMasterListAdapter);
-
         /** Register listview for contextmenu */
-//        registerForContextMenu(BaseDomain.lv_main);
         registerForContextMenu(BaseDomain.rv_main);
     }
 
@@ -125,42 +93,4 @@ public class BaseActivity extends AppCompatActivity {
             }
         }
     }
-
-    /**
-     * Event handler of listview item click event
-     *
-     * @param item
-     * @return
-     */
-//    @Override
-//    public boolean onContextItemSelected(MenuItem item) {
-//
-//        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
-////        BaseDomain.singleMasterList = BaseDomain.list_adapter.getItem(info.position);
-//        BaseDomain.singleMasterList = BaseDomain.rvMasterListAdapter.getItemId(info.position);
-//
-//        switch ( item.getItemId() ) {
-//            case 0 :
-//                au.start(this, EditMainListActivity.class);
-//                break;
-//            case 1 :
-//                au.confirm(this, "Are you sure you want to delete " + BaseDomain.singleMasterList.getMl_title() + "?");
-////                String x = String.valueOf(au.confirm(this, "Are you sure you want to delete " + BaseDomain.singleMasterList.getMl_title() + "?"));
-////                Toast.makeText(this, x, Toast.LENGTH_SHORT).show();
-////                if(au.confirm(this, "Are you sure you want to delete " + BaseDomain.singleMasterList.getMl_title() + "?")) {
-////
-////                }
-//                break;
-//            case 2 :
-//                String title = BaseDomain.singleMasterList.getMl_title();
-//                OpsDelete del = new OpsDelete();
-//                del.deleteMasterList(BaseDomain.singleMasterList.getId());
-//                Toast.makeText(this, title + " list has been deleted", Toast.LENGTH_SHORT).show();
-//                au.refreshMasterList(this);
-//                break;
-//            default:
-//                au.start(this, CardActivity.class);
-//        }
-//        return true;
-//    }
 }

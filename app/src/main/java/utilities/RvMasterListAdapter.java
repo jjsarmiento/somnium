@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.outmind.jts.somnium.R;
 
@@ -21,7 +22,7 @@ public class RvMasterListAdapter extends RecyclerView.Adapter<RvMasterListAdapte
 
     ArrayList<MasterList> masterList;
 
-    public RvMasterListAdapter(ArrayList<MasterList> masterListList, Context context) {
+    public RvMasterListAdapter(ArrayList<MasterList> masterListList) {
         masterList = masterListList;
     }
 
@@ -47,11 +48,20 @@ public class RvMasterListAdapter extends RecyclerView.Adapter<RvMasterListAdapte
 
         protected TextView tvName;
         protected TextView tvDesc;
+        protected View view;
 
         public RvMasterListViewHolder(View v) {
             super(v);
+            view = v;
             tvName = (TextView) v.findViewById(R.id.listName);
             tvDesc = (TextView) v.findViewById(R.id.listDesc);
+
+            view.setOnClickListener(new View.OnClickListener(){
+                @Override public void onClick(View v) {
+                    Toast.makeText(v.getContext(), "Sample", Toast.LENGTH_SHORT).show();
+                }
+            });
+
         }
 
     }

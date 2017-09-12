@@ -40,7 +40,7 @@ public class ActivityUtility {
 
     public void refreshMasterList(Activity activity) {
         BaseDomain.db_MasterList = Select.from(MasterList.class).orderBy("id desc").list();
-        BaseDomain.rvMasterListAdapter = new RvMasterListAdapter((ArrayList<MasterList>) BaseDomain.db_MasterList, activity);
+        BaseDomain.rvMasterListAdapter = new RvMasterListAdapter((ArrayList<MasterList>) BaseDomain.db_MasterList);
         BaseDomain.rv_main.setAdapter(BaseDomain.rvMasterListAdapter);
     }
 
