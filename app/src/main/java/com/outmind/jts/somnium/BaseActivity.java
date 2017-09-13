@@ -35,7 +35,6 @@ public class BaseActivity extends AppCompatActivity {
 
         au = new ActivityUtility();
         au.refreshMasterList(this);
-
     }
 
     @Override

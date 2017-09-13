@@ -6,8 +6,9 @@
 
 
     <color name="colorPrimary">#4DB6AC</color>
-    <color name="colorPrimaryDark">#26A69A</color>
+    <color name="colorPrimaryDark">#009688</color>
     <color name="colorAccent">#FF4081</color>
 
-    <color name="danger">#F44336</color>
+    <!--<color name="danger">#F44336</color>-->
+    <color name="danger">#EF9A9A</color>
 </resources>

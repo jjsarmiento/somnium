@@ -37,7 +37,7 @@
         <activity android:name=".EditMainListActivity" />
         <activity android:name=".AddSubListItemActivity" />
         <activity android:name=".EditSubListItemActivity" />
-        <activity android:name=".CardActivity"></activity>
+        <activity android:name=".CardActivity" />
     </application>
 
 </manifest>
