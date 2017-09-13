@@ -2,9 +2,11 @@ package utilities;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.widget.ArrayAdapter;
+import android.widget.Toast;
 
 import com.orm.query.Condition;
 import com.orm.query.Select;
@@ -68,6 +70,28 @@ public class ActivityUtility {
             }).show();
 
         return ALERT_DIALOG_VAL;
+    }
+
+    public void dialog(String message, Context context) {
+        android.support.v7.app.AlertDialog.Builder alertDialogBuilder = new android.support.v7.app.AlertDialog.Builder(context);
+        alertDialogBuilder.setMessage(message);
+//        alertDialogBuilder.setPositiveButton("OK",
+//                new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface arg0, int arg1) {
+//                        Toast.makeText(, "", Toast.LENGTH_SHORT).show();
+//                    }
+//                });
+//
+//        alertDialogBuilder.setNegativeButton("No",new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialog, int which) {
+//                finish();
+//            }
+//        });
+
+        android.support.v7.app.AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
     }
 
 }

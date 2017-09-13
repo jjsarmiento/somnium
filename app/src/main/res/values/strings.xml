@@ -13,4 +13,7 @@
     <!-- Field Placeholders -->
     <string name="list_name">Enter your list\'s name</string>
     <string name="list_desc">A short description what your list is all about</string>
+
+    <string name="app_author_name">Jan Sarmiento</string>
+    <string name="app_version_number">1.0</string>
 </resources>

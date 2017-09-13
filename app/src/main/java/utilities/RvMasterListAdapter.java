@@ -1,6 +1,5 @@
 package utilities;
 
-import android.content.Context;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.ContextMenu;
@@ -10,7 +9,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.outmind.jts.somnium.R;
 
@@ -84,10 +82,6 @@ public class RvMasterListAdapter extends RecyclerView.Adapter<RvMasterListAdapte
                 MenuItem conMen = contextMenu.add(Menu.NONE, i, i, BaseDomain.ML_CONMENU_ITEMS[i]);
                 conMen.setOnMenuItemClickListener(onClickContextMenuitem);
             }
-//            for (String menuItem : BaseDomain.ML_CONMENU_ITEMS) {
-//                MenuItem conMen = contextMenu.add(Menu.NONE, 1, 1, menuItem);
-//                conMen.setOnMenuItemClickListener(onClickContextMenuitem);
-//            }
         }
 
         private final MenuItem.OnMenuItemClickListener onClickContextMenuitem = new MenuItem.OnMenuItemClickListener() {
