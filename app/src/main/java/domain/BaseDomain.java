@@ -5,7 +5,6 @@ import android.support.v7.widget.RecyclerView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.outmind.jts.somnium.BaseActivity;
 import com.outmind.jts.somnium.R;
 
 import java.util.ArrayList;

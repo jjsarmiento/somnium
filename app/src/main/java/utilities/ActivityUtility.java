@@ -5,16 +5,8 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.widget.ArrayAdapter;
-import android.widget.Toast;
-
-import com.orm.query.Condition;
 import com.orm.query.Select;
-import com.outmind.jts.somnium.BaseActivity;
-
 import java.util.ArrayList;
-import java.util.List;
-
 import domain.BaseDomain;
 import entity.MasterList;
 import entity.SubList;

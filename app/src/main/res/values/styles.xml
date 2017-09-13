@@ -10,8 +10,10 @@
 
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-
         <item name="android:actionModeBackground">@color/colorPrimaryDark</item>
+
+        <!-- Prevent ActionMode toolbar to be created  -->
+        <item name="windowActionModeOverlay">true</item>
     </style>
 
     <style name="Somnium.NoActionBar">
