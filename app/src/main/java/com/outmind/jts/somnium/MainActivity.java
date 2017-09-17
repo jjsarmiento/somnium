@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(this);
         BaseDomain.rv_main.setLayoutManager(mLayoutManager);
 
-        au = new ActivityUtility();
+        au = new ActivityUtility(this);
         au.refreshMasterList(this);
     }
 
@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.tm_newList :
-                au.start(this, AddListActivity.class);
+                au.start(AddListActivity.class);
                 break;
             case R.id.tm_delList :
                 deleteActionMode = startSupportActionMode(deleteActionModeCallBack);

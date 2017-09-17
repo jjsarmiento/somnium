@@ -96,7 +96,7 @@ public class RvMasterListAdapter extends RecyclerView.Adapter<RvMasterListAdapte
                 switch (menuItem.getItemId()) {
                     case 0 :
                         // TODO Edit
-                        au.start(BaseDomain.currentActivity, EditMainListActivity.class);
+                        au.start(EditMainListActivity.class);
                         break;
                     case 1 :
                         // TODO Mark as favorite function

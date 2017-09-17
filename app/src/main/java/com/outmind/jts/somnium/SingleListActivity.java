@@ -29,7 +29,7 @@ public class SingleListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_single_list);
         getSupportActionBar().setTitle(BaseDomain.singleMasterList.getMl_title());
 
-        au = new ActivityUtility();
+        au = new ActivityUtility(this);
         opDelete = new OpsDelete();
 
         /** Initialize Sublist */
@@ -41,7 +41,7 @@ public class SingleListActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 BaseDomain.singleSubList = BaseDomain.subListAdapter.getItem(i);
-                au.start(SingleListActivity.this, EditSubListItemActivity.class);
+                au.start(EditSubListItemActivity.class);
             }
         });
 
@@ -50,7 +50,7 @@ public class SingleListActivity extends AppCompatActivity {
     }
 
     public void addSubListItem( View v ) {
-        au.start(this, AddSubListItemActivity.class);
+        au.start(AddSubListItemActivity.class);
     }
 
     @Override
@@ -70,7 +70,7 @@ public class SingleListActivity extends AppCompatActivity {
         BaseDomain.singleSubList = BaseDomain.subListAdapter.getItem(info.position);
         switch ( item.getItemId() ) {
             case 0 :
-                au.start(this, EditSubListItemActivity.class);
+                au.start(EditSubListItemActivity.class);
                 break;
             case 1 :
                 Toast.makeText(this, BaseDomain.SL_CONMENU_ITEMS[item.getItemId()], Toast.LENGTH_SHORT).show();

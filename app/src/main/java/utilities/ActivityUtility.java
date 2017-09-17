@@ -20,13 +20,20 @@ import entity.SubList;
 public class ActivityUtility {
 
     private static boolean ALERT_DIALOG_VAL = false;
+    private Activity activity;
 
-    public ActivityUtility(){}
+    public ActivityUtility(){
+        activity = null;
+    }
 
-    public void start(Activity from, Class to){
+    public ActivityUtility(Activity activity) {
+        this.activity = activity;
+    }
+
+    public void start(Class to){
         try {
-            Intent newIntent = new Intent(from, to);
-            from.startActivity(newIntent);
+            Intent newIntent = new Intent(activity, to);
+            activity.startActivity(newIntent);
         } catch (Exception e) {
             System.out.print(e.toString());
         }
