@@ -55,6 +55,8 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         /** SETTING MAIN CONTENT */
+        BaseDomain.currentActivity = this;
+
         BaseDomain.ML_CONMENU_ITEMS = getResources().getStringArray(R.array.conmen_array);
         BaseDomain.SL_CONMENU_ITEMS = getResources().getStringArray(R.array.conmen_sub_array);
 

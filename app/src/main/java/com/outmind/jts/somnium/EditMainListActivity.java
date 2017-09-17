@@ -21,6 +21,8 @@ public class EditMainListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_edit_main_list);
         getSupportActionBar().setTitle("Edit");
 
+        BaseDomain.currentActivity = this;
+
         au = new ActivityUtility();
 
         mlTitle = (EditText) findViewById(R.id.mlTitle);

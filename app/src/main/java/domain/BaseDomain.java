@@ -1,5 +1,6 @@
 package domain;
 
+import android.app.Activity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.widget.ArrayAdapter;
@@ -21,6 +22,8 @@ import utilities.SubListAdapter;
  */
 
 public class BaseDomain {
+
+    public static Activity currentActivity;
 
     /** B: Constants */
     public static final Integer             SUBSTR_MAXLENGTH = 30;

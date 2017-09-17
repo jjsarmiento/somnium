@@ -1,5 +1,6 @@
 package utilities;
 
+import android.app.Activity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.ContextMenu;
@@ -10,6 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.outmind.jts.somnium.EditMainListActivity;
+import com.outmind.jts.somnium.MainActivity;
 import com.outmind.jts.somnium.R;
 
 import java.util.ArrayList;
@@ -65,9 +68,11 @@ public class RvMasterListAdapter extends RecyclerView.Adapter<RvMasterListAdapte
         protected TextView tvDesc;
         protected View view;
         protected CardView cardView;
+        protected ActivityUtility au;
 
         public RvMasterListViewHolder(View v) {
             super(v);
+            au = new ActivityUtility();
             tvName = (TextView) v.findViewById(R.id.listName);
             tvDesc = (TextView) v.findViewById(R.id.listDesc);
             cardView = (CardView) v.findViewById(R.id.cv);
@@ -87,14 +92,16 @@ public class RvMasterListAdapter extends RecyclerView.Adapter<RvMasterListAdapte
         private final MenuItem.OnMenuItemClickListener onClickContextMenuitem = new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
+                BaseDomain.singleMasterList = BaseDomain.db_MasterList.get(getAdapterPosition());
                 switch (menuItem.getItemId()) {
-                    case 1 :
-                        // TODO Edit function
+                    case 0 :
+                        // TODO Edit
+                        au.start(BaseDomain.currentActivity, EditMainListActivity.class);
                         break;
-                    case 2 :
+                    case 1 :
                         // TODO Mark as favorite function
                         break;
-                    case 3 :
+                    case 2 :
                         // TODO Delete function
                         break;
                     default:
