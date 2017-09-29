@@ -23,17 +23,18 @@ public class ActivityUtility {
     private Activity activity;
 
     public ActivityUtility(){
-        activity = null;
+        this.activity = BaseDomain.currentActivity;
     }
 
     public ActivityUtility(Activity activity) {
+        BaseDomain.currentActivity = activity;
         this.activity = activity;
     }
 
     public void start(Class to){
         try {
-            Intent newIntent = new Intent(activity, to);
-            activity.startActivity(newIntent);
+            Intent newIntent = new Intent(this.activity, to);
+            this.activity.startActivity(newIntent);
         } catch (Exception e) {
             System.out.print(e.toString());
         }

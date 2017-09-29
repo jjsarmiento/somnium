@@ -23,7 +23,7 @@ public class EditMainListActivity extends AppCompatActivity {
 
         BaseDomain.currentActivity = this;
 
-        au = new ActivityUtility();
+        au = new ActivityUtility(this);
 
         mlTitle = (EditText) findViewById(R.id.mlTitle);
         mlDesc = (EditText) findViewById(R.id.mlDescription);
