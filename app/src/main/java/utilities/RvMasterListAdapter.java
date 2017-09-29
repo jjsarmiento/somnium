@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.outmind.jts.somnium.EditMainListActivity;
 import com.outmind.jts.somnium.MainActivity;
 import com.outmind.jts.somnium.R;
+import com.outmind.jts.somnium.SingleListActivity;
 
 import java.util.ArrayList;
 
@@ -28,6 +29,7 @@ import entity.MasterList;
 public class RvMasterListAdapter extends RecyclerView.Adapter<RvMasterListAdapter.RvMasterListViewHolder> {
 
     ArrayList<MasterList> masterList;
+    ActivityUtility au;
 
     public RvMasterListAdapter(ArrayList<MasterList> masterListList) {
         masterList = masterListList;
@@ -37,14 +39,17 @@ public class RvMasterListAdapter extends RecyclerView.Adapter<RvMasterListAdapte
     public RvMasterListAdapter.RvMasterListViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_card, parent, false);
         final RvMasterListViewHolder viewHolder = new RvMasterListViewHolder(v);
-
+        au = new ActivityUtility();
         // click listener of cardview
-        v.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // TODO Create new activity
-            }
-        });
+//        v.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                // TODO Create new activity
+////                BaseDomain.singleMasterList = BaseDomain.db_MasterList.get();
+////                au.start(SingleListActivity.class);
+//                Toast.makeText(BaseDomain.currentActivity, "CLICKBITCH", Toast.LENGTH_SHORT).show();
+//            }
+//        });
 
         return viewHolder;
     }
@@ -63,23 +68,23 @@ public class RvMasterListAdapter extends RecyclerView.Adapter<RvMasterListAdapte
     /**
      * Implements ContextMenu tools
      */
-    public static class RvMasterListViewHolder extends RecyclerView.ViewHolder implements RecyclerView.OnCreateContextMenuListener {
+    public static class RvMasterListViewHolder extends RecyclerView.ViewHolder implements RecyclerView.OnCreateContextMenuListener, RecyclerView.OnClickListener {
 
         protected TextView tvName;
         protected TextView tvDesc;
         protected View view;
         protected CardView cardView;
-        protected ActivityUtility au;
+        protected ActivityUtility vhau;
 
         public RvMasterListViewHolder(View v) {
             super(v);
-            au = new ActivityUtility();
+            vhau = new ActivityUtility();
             tvName = (TextView) v.findViewById(R.id.listName);
             tvDesc = (TextView) v.findViewById(R.id.listDesc);
             cardView = (CardView) v.findViewById(R.id.cv);
 
             v.setOnCreateContextMenuListener(this);
-
+            v.setOnClickListener(this);
         }
 
         @Override
@@ -97,7 +102,7 @@ public class RvMasterListAdapter extends RecyclerView.Adapter<RvMasterListAdapte
                 switch (menuItem.getItemId()) {
                     case 0 :
                         // TODO Edit
-                        au.start(EditMainListActivity.class);
+                        vhau.start(EditMainListActivity.class);
                         break;
                     case 1 :
                         // TODO Mark as favorite function
@@ -111,6 +116,13 @@ public class RvMasterListAdapter extends RecyclerView.Adapter<RvMasterListAdapte
                 return false;
             }
         };
+
+        @Override
+        public void onClick(View view) {
+            Toast.makeText(BaseDomain.currentActivity, "sample", Toast.LENGTH_SHORT).show();
+            BaseDomain.singleMasterList = BaseDomain.db_MasterList.get(getAdapterPosition());
+            vhau.start(SingleListActivity.class);
+        }
     }
 
 }

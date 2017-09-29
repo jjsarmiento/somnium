@@ -41,7 +41,6 @@
 
         <activity
             android:name=".MainActivity"
-            android:label="@string/title_activity_main"
             android:theme="@style/Somnium.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
