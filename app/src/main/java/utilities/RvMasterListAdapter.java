@@ -3,12 +3,14 @@ package utilities;
 import android.app.Activity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -62,7 +64,7 @@ public class RvMasterListAdapter extends RecyclerView.Adapter<RvMasterListAdapte
     @Override
     public void onBindViewHolder(RvMasterListViewHolder holder, int position) {
         holder.tvName.setText(masterList.get(position).getMl_title());
-        holder.tvDesc.setText(masterList.get(position).getMl_description());
+        holder.tvDesc.setText(masterList.get(position).getMl_description_short());
     }
 
     /**
@@ -75,6 +77,8 @@ public class RvMasterListAdapter extends RecyclerView.Adapter<RvMasterListAdapte
         protected View view;
         protected CardView cardView;
         protected ActivityUtility vhau;
+        protected Toolbar cvToolbar;
+        protected ImageView tvImage;
 
         public RvMasterListViewHolder(View v) {
             super(v);
@@ -82,6 +86,17 @@ public class RvMasterListAdapter extends RecyclerView.Adapter<RvMasterListAdapte
             tvName = (TextView) v.findViewById(R.id.listName);
             tvDesc = (TextView) v.findViewById(R.id.listDesc);
             cardView = (CardView) v.findViewById(R.id.cv);
+            cvToolbar = (Toolbar) v.findViewById(R.id.cvToolBar);
+            tvImage = (ImageView) v.findViewById(R.id.listImage);
+
+            cvToolbar.inflateMenu(R.menu.topmenu);
+            cvToolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+                @Override
+                public boolean onMenuItemClick(MenuItem item) {
+                    Toast.makeText(BaseDomain.currentActivity, getAdapterPosition(), Toast.LENGTH_SHORT).show();
+                    return false;
+                }
+            });
 
             v.setOnCreateContextMenuListener(this);
             v.setOnClickListener(this);
@@ -119,7 +134,6 @@ public class RvMasterListAdapter extends RecyclerView.Adapter<RvMasterListAdapte
 
         @Override
         public void onClick(View view) {
-            Toast.makeText(BaseDomain.currentActivity, "sample", Toast.LENGTH_SHORT).show();
             BaseDomain.singleMasterList = BaseDomain.db_MasterList.get(getAdapterPosition());
             vhau.start(SingleListActivity.class);
         }
